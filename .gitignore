@@ -2,7 +2,6 @@ venv
 __pycache__
 .idea
 ssm.py
-.ebignore
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

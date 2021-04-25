@@ -1,16 +1,16 @@
 from flask import Flask, render_template, url_for, jsonify, request
 import translate, sentiment, synthesize
 
-application = Flask(__name__)
-application.config['JSON_AS_ASCII'] = False
+app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 
-@application.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
 
-@application.route('/translate-text', methods=['POST'])
+@app.route('/translate-text', methods=['POST'])
 def translate_text():
     # I am using the request object to call the get.json() to be able to store the data posted in the
     # http request as a JSON Object
@@ -27,7 +27,7 @@ def translate_text():
     return jsonify(response)
 
 
-@application.route('/sentiment-analysis', methods=['POST'])
+@app.route('/sentiment-analysis', methods=['POST'])
 def sentiment_analysis():
     data = request.get_json()
     print(data)
@@ -37,7 +37,7 @@ def sentiment_analysis():
     return jsonify(response)
 
 
-@application.route('/text-to-speech', methods=['POST'])
+@app.route('/text-to-speech', methods=['POST'])
 def text_to_speech():
     data = request.get_json()
     print(data)
@@ -50,4 +50,4 @@ def text_to_speech():
 
 
 if __name__ == "__main__":
-    application.run(debug=True)
+    app.run(debug=True)
