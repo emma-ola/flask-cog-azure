@@ -6,7 +6,7 @@ import time
 
 ssm = boto3.client(
     'ssm',
-    region_name="us-west-2",
+    region_name="us-east-1",
     aws_access_key_id=os.environ['ACCESS_KEY'],
     aws_secret_access_key=os.environ['SECRET_KEY']
 )
