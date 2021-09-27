@@ -11,20 +11,12 @@ ssm = boto3.client(
 )
 
 ssm_response = ssm.get_parameter(
-    Name='FlaskAPIKey'
+    Name='FlaskAPIKey',
+    WithDecryption=True
 )
 
-# Don't forget to replace with your Cog Services subscription key!
-# If you prefer to use environment variables, see Extra Credit for more info.
 subscription_key = ssm_response['Parameter']['Value']
 location = 'westus'
-
-
-# Don't forget to replace with your Cog Services location!
-# Our Flask route will supply two arguments: text_input and language_output.
-# When the translate text button is pressed in our Flask app, the Ajax request
-# will grab these values from our web app, and use them in the request.
-# See main.js for Ajax calls.
 
 
 def get_translation(text_input, language_output):

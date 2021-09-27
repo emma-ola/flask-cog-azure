@@ -12,7 +12,8 @@ ssm = boto3.client(
 )
 
 ssm_response = ssm.get_parameter(
-    Name='FlaskAPIKey'
+    Name='FlaskAPIKey',
+    WithDecryption=True
 )
 
 

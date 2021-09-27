@@ -11,17 +11,12 @@ ssm = boto3.client(
 )
 
 ssm_response = ssm.get_parameter(
-    Name='FlaskAPIKey'
+    Name='FlaskAPIKey',
+    WithDecryption=True
 )
 
-# Don't forget to replace with your Cog Services subscription key!
 subscription_key = ssm_response['Parameter']['Value']
 endpoint = "https://westus.api.cognitive.microsoft.com"
-# Our Flask route will supply four arguments: input_text, input_language,
-# output_text, output_language.
-# When the run sentiment analysis button is pressed in our Flask app,
-# the Ajax request will grab these values from our web app, and use them
-# in the request. See main.js for Ajax calls.
 
 
 def get_sentiment(input_text, input_language):
